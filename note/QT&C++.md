@@ -23,3 +23,10 @@ int main() {
     return 0;
 }
 ```
+## QT信号与槽四种表达方式
+```
+QObject::connect(sender, &Sender::signalName, receiver, &Receiver::slotName); //普通直连
+QObject::connect(sender, SIGNAL(signalName()), receiver, SLOT(slotName())); //字符串
+QObject::connect(sender, QOverload<int>::of(&Sender::signalName), receiver, &Receiver::slotName); //信号重载
+QObject::connect(sender, &Sender::signalName, [=]() { receiver->slotName(); }); //lambda表达式
+```

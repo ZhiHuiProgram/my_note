@@ -30,3 +30,25 @@ QObject::connect(sender, SIGNAL(signalName()), receiver, SLOT(slotName())); //�
 QObject::connect(sender, QOverload<int>::of(&Sender::signalName), receiver, &Receiver::slotName); //信号重载
 QObject::connect(sender, &Sender::signalName, [=]() { receiver->slotName(); }); //lambda表达式
 ```
+## QT调整布局大小的方法
+```
+1 固定大小
+QPushButton *button = new QPushButton("Button");
+button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+2 最大最小尺寸
+QPushButton *button = new QPushButton("Button");
+button->setMinimumSize(100, 50); // 最小宽度100，高度50
+button->setMaximumSize(200, 100); // 最大宽度200，高度100
+3 增加间隔
+QVBoxLayout *layout = new QVBoxLayout;
+QPushButton *button = new QPushButton("Button");
+layout->addWidget(button);
+// 添加垂直间隔
+layout->addStretch(1); // 这里的数字越大，间隔越大
+4 手动设置xy坐标及大小
+QPushButton *button = new QPushButton("Button");
+button->setGeometry(50, 50, 100, 50); // x坐标50，y坐标50，宽度100，高度50
+5 使用样式表
+QPushButton *button = new QPushButton("Button");
+button->setStyleSheet("QPushButton { min-width: 100px; max-width: 200px; min-height: 50px; max-height: 100px; }");
+```

@@ -52,3 +52,8 @@ button->setGeometry(50, 50, 100, 50); // x坐标50，y坐标50，宽度100，高
 QPushButton *button = new QPushButton("Button");
 button->setStyleSheet("QPushButton { min-width: 100px; max-width: 200px; min-height: 50px; max-height: 100px; }");
 ```
+## QT找不到serial
+```
+sudo apt update
+sudo apt install libqt5serialport5-dev
+```

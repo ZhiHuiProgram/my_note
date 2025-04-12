@@ -7,16 +7,24 @@ pip install git+https://github.com/guillaumekln/faster-whisper
 ```
 from faster_whisper import WhisperModel
 
-# 加载模型，使用默认的 CPU 计算
-model = WhisperModel("base", compute_type="int8")
+# 选择模型
+model = WhisperModel("tiny", compute_type="int8")  # CPU 可用
 
-# 音频文件路径
-audio_file = "your_audio.mp3"
+# 音频路径
+audio_path = "your_audio.mp3"
 
-# 获取转录结果
-segments, _ = model.transcribe(audio_file, beam_size=5)
+# 转录
+segments, _ = model.transcribe(audio_path)
 
-# 输出结果
-for segment in segments:
-    print(f"[{segment.start:02d}:{segment.end:02d}] {segment.text}")
+# 保存为 .lrc 文件
+with open("output.lrc", "w", encoding="utf-8") as f:
+    for segment in segments:
+        # 转换时间为 LRC 格式 [mm:ss.xx]
+        minutes = int(segment.start // 60)
+        seconds = int(segment.start % 60)
+        milliseconds = int((segment.start - int(segment.start)) * 100)
+        timestamp = f"[{minutes:02}:{seconds:02}.{milliseconds:02}]"
+        f.write(f"{timestamp} {segment.text.strip()}\n")
+
+print("已生成 LRC 文件：output.lrc")
 ```

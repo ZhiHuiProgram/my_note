@@ -1,9 +1,9 @@
-##下载
+## 下载
 ```
 pip install torch torchaudio
 pip install git+https://github.com/guillaumekln/faster-whisper
 ```
-##python代码
+## python代码
 ```
 from faster_whisper import WhisperModel
 

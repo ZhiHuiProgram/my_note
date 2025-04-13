@@ -9,6 +9,8 @@ ffmpeg -i input.ogg output.mp3
 # 🎛 带音质设置的版本：
 ```
 ffmpeg -i input.ogg -codec:a libmp3lame -qscale:a 2 output.mp3
+```
+```
 参数解释：
 -codec:a libmp3lame：使用 LAME 编码器（最常见的 mp3 编码器）
 -qscale:a：控制音质，范围是 0（最好）到 9（最差）

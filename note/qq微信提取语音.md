@@ -19,3 +19,5 @@ ffmpeg -i input.ogg -codec:a libmp3lame -qscale:a 2 output.mp3
 5：适中
 7-9：体积小但音质下降
 ```
+## rvc配置
+![image](https://github.com/user-attachments/assets/c67bf0c8-e027-47d6-9c9e-2a02550de1ae)
